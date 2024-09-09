@@ -2,11 +2,12 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LayoutWrapper from "./LayoutWrapper";
 
-// Lazy load the components
 const HomePage = lazy(() => import("../pages/HomePage"));
 const AboutPage = lazy(() => import("../pages/AboutPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const LoginPage = lazy(() => import("../pages/Login"));
+const CoursePage = lazy(() => import("../pages/CoursePage"));
+const ContactForm = lazy(() => import("../pages/Contact"));
 
 const AppRoutes: React.FC = () => {
   return (
@@ -34,10 +35,26 @@ const AppRoutes: React.FC = () => {
               }
             />
             <Route
+              path="/course"
+              element={
+                <LayoutWrapper>
+                  <CoursePage />
+                </LayoutWrapper>
+              }
+            />
+            <Route
               path="*"
               element={
                 <LayoutWrapper>
                   <NotFoundPage />
+                </LayoutWrapper>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <LayoutWrapper>
+                  <ContactForm />
                 </LayoutWrapper>
               }
             />
